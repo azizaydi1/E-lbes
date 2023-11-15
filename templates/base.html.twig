@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>{ %block title%}Hexashop Ecommerce HTML CSS Template{% endblock %}</title>
+    <title>{% block title %}Hexashop Ecommerce HTML CSS Template{% endblock %}</title>
 
 
     <!-- Additional CSS Files -->
@@ -32,7 +32,7 @@
     -->
     {% endblock %}
 </head>
-{% bolck body %}
+{% block body %}
 <body>
 
 <!-- ***** Preloader Start ***** -->
@@ -66,10 +66,10 @@
                         <li class="submenu">
                             <a href="javascript:;">Pages</a>
                             <ul>
-                                <li><a href="{{ path('about') }}">About Us</a></li>
-                                <li><a href="{{ path('product') }}">Products</a></li>
-                                <li><a href="{{ path("single_product") }}">Single Product</a></li>
-                                <li><a href="{{ path('contact') }}">Contact Us</a></li>
+                                <li><a href="about">About Us</a></li>
+                                <li><a href="product">Products</a></li>
+                                <li><a href="single_product">Single Product</a></li>
+                                <li><a href="contact">Contact Us</a></li>
                             </ul>
                         </li>
                         <li class="submenu">
