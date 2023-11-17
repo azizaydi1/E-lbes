@@ -3,44 +3,48 @@
 {% block title %}Societe{% endblock %}
 
 {% block body %}
+    <style>
+        /* Ajoutez votre style ici */
+        h1 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            display: inline-block;
+            margin-right: 10px;
+            text-decoration: none;
+            padding: 5px 10px;
+            background-color: #333;
+            color: #fff;
+            border-radius: 5px;
+        }
+    </style>
+
     <h1>Societe</h1>
 
     <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ societe.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ societe.nom }}</td>
-            </tr>
-            <tr>
-                <th>Patente</th>
-                <td>{{ societe.patente }}</td>
-            </tr>
-            <tr>
-                <th>Siege</th>
-                <td>{{ societe.siege }}</td>
-            </tr>
-            <tr>
-                <th>Tel</th>
-                <td>{{ societe.tel }}</td>
-            </tr>
-            <tr>
-                <th>Dabonnement</th>
-                <td>{{ societe.dabonnement }}</td>
-            </tr>
-            <tr>
-                <th>Datedebut</th>
-                <td>{{ societe.datedebut ? societe.datedebut|date('Y-m-d') : '' }}</td>
-            </tr>
-        </tbody>
+        <!-- ... le reste de votre code ... -->
     </table>
 
-    <a href="{{ path('app_societe_index') }}">back to list</a>
+    <a href="{{ path('app_societe_index') }}">Retour à la liste</a>
 
-    <a href="{{ path('app_societe_edit', {'id': societe.id}) }}">edit</a>
+    <a href="{{ path('app_societe_edit', {'id': societe.id}) }}">Modifier</a>
 
     {{ include('societe/_delete_form.html.twig') }}
 {% endblock %}

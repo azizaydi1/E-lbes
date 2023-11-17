@@ -1,0 +1,26 @@
+/* styles.css */
+form {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    display: inline-block;
+}
+
+button.btn {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #333;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+button.btn:hover {
+    background-color: #555;
+    border: 1px solid #555;
+}
+
+button.btn:active {
+    background-color: #444;
+    border: 1px solid #444;
+}

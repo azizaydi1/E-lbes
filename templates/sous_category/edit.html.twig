@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit SousCategory{% endblock %}
+
+{% block body %}
+    <h1>Edit SousCategory</h1>
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
+
+    {{ include('sous_category/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_sous_category_index') }}">back to list</a>
+
+    {{ include('sous_category/_delete_form.html.twig') }}
+{% endblock %}

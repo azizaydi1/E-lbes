@@ -4,7 +4,7 @@
 
 {% block body %}
     <h1>Create new Societe</h1>
-
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
     {{ include('societe/_form.html.twig') }}
 
     <a href="{{ path('app_societe_index') }}">back to list</a>
