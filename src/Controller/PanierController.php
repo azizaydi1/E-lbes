@@ -30,6 +30,10 @@ class PanierController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Handle the Produit relationship if needed
+            // Example: $produit = $form->get('produit')->getData();
+            // $panier->setProduit($produit);
+
             $entityManager->persist($panier);
             $entityManager->flush();
 
@@ -57,6 +61,10 @@ class PanierController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Handle the Produit relationship if needed
+            // Example: $produit = $form->get('produit')->getData();
+            // $panier->setProduit($produit);
+
             $entityManager->flush();
 
             return $this->redirectToRoute('app_panier_index', [], Response::HTTP_SEE_OTHER);
@@ -71,7 +79,7 @@ class PanierController extends AbstractController
     #[Route('/{id}', name: 'app_panier_delete', methods: ['POST'])]
     public function delete(Request $request, Panier $panier, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$panier->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $panier->getId(), $request->request->get('_token'))) {
             $entityManager->remove($panier);
             $entityManager->flush();
         }

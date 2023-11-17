@@ -2,10 +2,17 @@
 
 {% block title %}New Panier{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+{% endblock %}
+
 {% block body %}
-    <h1>Create new Panier</h1>
+    <div class="container">
+        <h1 class="create-panier-title">Create New Panier</h1>
 
-    {{ include('panier/_form.html.twig') }}
+        {{ include('panier/_form.html.twig') }}
 
-    <a href="{{ path('app_panier_index') }}">back to list</a>
+        <a href="{{ path('app_panier_index') }}" class="btn btn-secondary">Back to List</a>
+    </div>
 {% endblock %}

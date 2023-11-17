@@ -30,6 +30,7 @@ class CommandeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $entityManager->persist($commande);
             $entityManager->flush();
 

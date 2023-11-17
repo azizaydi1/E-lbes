@@ -36,7 +36,7 @@ class Commande
     private ?string $modeLiv = null;
 
     #[ORM\OneToOne(inversedBy: 'commande', cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Panier $idp = null;
 
     public function getId(): ?int
@@ -127,16 +127,17 @@ class Commande
 
         return $this;
     }
-
     public function getIdp(): ?Panier
     {
         return $this->idp;
     }
 
-    public function setIdp(Panier $idp): static
+    public function setIdp(?Panier $idp): static
     {
         $this->idp = $idp;
 
         return $this;
     }
+
+
 }

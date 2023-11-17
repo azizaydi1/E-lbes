@@ -1,43 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Panier index{% endblock %}
+{% block title %}Panier {% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/panier.css') }}">
+{% endblock %}
 
 {% block body %}
-    <h1>Panier index</h1>
+    <div class="container">
+        <h1 class="panier-title">Panier</h1>
 
-    <table class="table">
-        <thead>
+        <table class="table">
+            <thead>
             <tr>
                 <th>Id</th>
-                <th>DateAchat</th>
+                <th>Date Achat</th>
                 <th>Societe</th>
                 <th>Quantite</th>
-                <th>PrixUnitaire</th>
-                <th>MontantTotal</th>
-                <th>actions</th>
+                <th>Prix Unitaire</th>
+                <th>Montant Total</th>
+                <th>Produit</th>
+                <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for panier in paniers %}
-            <tr>
-                <td>{{ panier.id }}</td>
-                <td>{{ panier.dateAchat ? panier.dateAchat|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ panier.societe }}</td>
-                <td>{{ panier.quantite }}</td>
-                <td>{{ panier.prixUnitaire }}</td>
-                <td>{{ panier.montantTotal }}</td>
-                <td>
-                    <a href="{{ path('app_panier_show', {'id': panier.id}) }}">show</a>
-                    <a href="{{ path('app_panier_edit', {'id': panier.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for panier in paniers %}
+                <tr>
+                    <td>{{ panier.id }}</td>
+                    <td>{{ panier.dateAchat ? panier.dateAchat|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ panier.societe }}</td>
+                    <td>{{ panier.quantite }}</td>
+                    <td>{{ panier.prixUnitaire }}</td>
+                    <td>{{ panier.montantTotal }}</td>
+                    <td>{{ panier.produit }}</td>
+                    <td>
+                        <a href="{{ path('app_panier_show', {'id': panier.id}) }}" class="btn btn-info">Show</a>
+                        <a href="{{ path('app_panier_edit', {'id': panier.id}) }}" class="btn btn-warning">Edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="8">No records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <a href="{{ path('app_panier_new') }}">Create new</a>
+        <a href="{{ path('app_panier_new') }}" class="btn btn-success">Create New</a>
+    </div>
 {% endblock %}

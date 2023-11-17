@@ -2,11 +2,17 @@
 
 {% block title %}Commande index{% endblock %}
 
-{% block body %}
-    <h1>Commande index</h1>
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+{% endblock %}
 
-    <table class="table">
-        <thead>
+{% block body %}
+    <div class="container">
+        <h1>Commande</h1>
+
+        <table class="table">
+            <thead>
             <tr>
                 <th>Id</th>
                 <th>DateCommande</th>
@@ -16,32 +22,33 @@
                 <th>MontantTotal</th>
                 <th>MethPay</th>
                 <th>ModeLiv</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for commande in commandes %}
-            <tr>
-                <td>{{ commande.id }}</td>
-                <td>{{ commande.dateCommande ? commande.dateCommande|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ commande.societe }}</td>
-                <td>{{ commande.produitAchete }}</td>
-                <td>{{ commande.quantite }}</td>
-                <td>{{ commande.montantTotal }}</td>
-                <td>{{ commande.methPay }}</td>
-                <td>{{ commande.modeLiv }}</td>
-                <td>
-                    <a href="{{ path('app_commande_show', {'id': commande.id}) }}">show</a>
-                    <a href="{{ path('app_commande_edit', {'id': commande.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="9">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for commande in commandes %}
+                <tr>
+                    <td>{{ commande.id }}</td>
+                    <td>{{ commande.dateCommande ? commande.dateCommande|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ commande.societe }}</td>
+                    <td>{{ commande.produitAchete }}</td>
+                    <td>{{ commande.quantite }}</td>
+                    <td>{{ commande.montantTotal }}</td>
+                    <td>{{ commande.methPay }}</td>
+                    <td>{{ commande.modeLiv }}</td>
+                    <td>
+                        <a href="{{ path('app_commande_show', {'id': commande.id}) }}" class="btn btn-primary">Show</a>
+                        <a href="{{ path('app_commande_edit', {'id': commande.id}) }}" class="btn btn-warning">Edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="9">No records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <a href="{{ path('app_commande_new') }}">Create new</a>
+        <a href="{{ path('app_commande_new') }}" class="btn btn-success">Create new</a>
+    </div>
 {% endblock %}

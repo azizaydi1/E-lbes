@@ -32,6 +32,9 @@ class Panier
     #[ORM\OneToOne(mappedBy: 'idp', cascade: ['persist', 'remove'])]
     private ?Commande $commande = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $Produit = null;
+
 
 
     public function getId(): ?int
@@ -106,12 +109,24 @@ class Panier
 
     public function setCommande(Commande $commande): static
     {
-        // set the owning side of the relation if necessary
+
         if ($commande->getIdp() !== $this) {
             $commande->setIdp($this);
         }
 
         $this->commande = $commande;
+
+        return $this;
+    }
+
+    public function getProduit(): ?string
+    {
+        return $this->Produit;
+    }
+
+    public function setProduit(string $Produit): static
+    {
+        $this->Produit = $Produit;
 
         return $this;
     }
